@@ -16,7 +16,7 @@
                 @endforeach
             </ul>
         </div>
-    app@endif
+    @endif
 
     <div class="container">
         <a href="/haven" class="btn btn-primary addContact">Home</a> &nbsp;
@@ -25,9 +25,9 @@
         </button>
     </div>
 
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped" id="contact-table">
-            <thead>
+    <div class="table-responsive text-center">
+        <table class="table table-bordered table-striped table-hover table-condensed" id="contact-table">
+            <thead class="text-center">
             <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
