@@ -11,16 +11,16 @@ class HavenController extends Controller
 
     const ERRORMSG = "Something went wrong! Please try again later.";
 
-    public function strclean($string) {
+    private function strclean($string) {
         $string = str_replace(' ', '', $string);
         return preg_replace('/[^A-Za-z0-9\-]/', '', $string);
     }
 
-    public function addressClean($string) {
+    private function addressClean($string) {
         return preg_replace('/[^A-Za-z0-9 #]/', '', $string);
     }
 
-    public function intclean($int) {
+    private function intclean($int) {
         if(!is_numeric($int)) {
             return preg_replace('/\D/', '', $int);
         }
@@ -52,6 +52,21 @@ class HavenController extends Controller
             $contact = $contactId;
             $message = "Contact updated!";
 
+        }
+
+        $validator = Validator::make($request->all(), [
+            'firstName' => 'required|alpha',
+            'lastName' => 'required|alpha',
+            'email' => 'required|e-mail',
+            'phone' => 'digits_between:9,10',
+            'address' => 'string',
+            'city' => 'string',
+            'state' => 'string',
+            'zip' => 'digits:5'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('/haven')->withErrors($validator);
         }
 
         $dateString = strtotime($request->month.'/'.$request->date.'/'.$request->year);

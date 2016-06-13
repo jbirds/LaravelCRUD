@@ -3,7 +3,8 @@
 The application allows reading and editing of a list of Contacts from the database. It runs on Laravel and MySQL.
 
 ## Installation
-1. Install Laravel.
+1. In the application root, run ```composer install```.
+2. Run 'php artisan key:generate' to generate a base64 key for your application.
 2. Either in your .env file or config/database.php, use 'Haven' as your database name, 'haven', as the user, and the specified password.
 3. In SQL, enter:
 ```

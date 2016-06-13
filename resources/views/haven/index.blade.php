@@ -8,6 +8,16 @@
         </div>
     @endif
 
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    app@endif
+
     <div class="container">
         <a href="/haven" class="btn btn-primary addContact">Home</a> &nbsp;
         <button type="button" class="btn btn-primary addContact" data-toggle="modal" data-target="#myModal">
